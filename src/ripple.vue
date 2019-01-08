@@ -113,6 +113,10 @@ export default {
         id: (this.id += 1),
         styles: { size, left, top }
       });
+
+      setTimeout(() => {
+        this.clearRipples();
+      }, 1500);
     },
     // 处理动画队列
     handleRippleEnd(id) {
