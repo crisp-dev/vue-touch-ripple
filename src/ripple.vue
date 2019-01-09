@@ -116,7 +116,7 @@ export default {
 
       setTimeout(() => {
         this.clearRipples();
-      }, 1500);
+      }, 3000);
     },
     // 处理动画队列
     handleRippleEnd(id) {
