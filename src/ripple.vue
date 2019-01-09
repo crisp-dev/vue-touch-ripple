@@ -78,9 +78,6 @@ export default {
     this.$el.addEventListener("mousedown", event => {
       this.mousedown(event);
     });
-    this.$el.addEventListener("click", event => {
-      this.click();
-    });
   },
   beforeDestroy() {
     this.clearRipples();
@@ -92,6 +89,8 @@ export default {
       if (this.keepLastRipple) {
         this.clearRipples();
       }
+
+      this.click();
     },
     // 鼠标按下
     mousedown(event) {
