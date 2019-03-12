@@ -1,5 +1,5 @@
 <template>
-  <div class="v-touch-ripple" ref="inner">
+  <component :is="tagType" :href="href" class="v-touch-ripple" ref="inner">
     <slot></slot>
     <div class="touch-ripple" v-show="showRipple">
       <transition-group
@@ -22,7 +22,7 @@
         ></ripple-core>
       </transition-group>
     </div>
-  </div>
+  </component>
 </template>
 
 <script>
@@ -32,6 +32,14 @@ export default {
   props: {
     color: String,
     opacity: Number,
+    tagType: {
+      type: String,
+      default: "div"
+    },
+    href: {
+      type: String,
+      default: "div"
+    },
     speed: Number,
     transition: String,
     globalOptions: {
@@ -74,9 +82,15 @@ export default {
   mounted() {
     this.$el.addEventListener("mouseup", event => {
       this.mouseup(event);
+      event.preventDefault();
     });
     this.$el.addEventListener("mousedown", event => {
       this.mousedown(event);
+      event.preventDefault();
+    });
+
+    this.$el.addEventListener("click", event => {
+      event.preventDefault();
     });
   },
   beforeDestroy() {
